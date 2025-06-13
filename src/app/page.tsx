@@ -1,95 +1,102 @@
+"use client";
+import { Button } from "@/components/button";
+import { Input } from "@/components/input";
 import Image from "next/image";
-import styles from "./page.module.css";
+import { useEffect, useState } from "react";
+import loginIcon from "../../public/icons/login-icon.svg";
+import TropaIcon from "../../public/icons/tropa.svg";
+import * as S from "./styles";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  const getUserNameFromEmail = (email: string) => {
+    const atIndex = email.indexOf("@");
+    if (atIndex === -1) return email;
+    return email.substring(0, atIndex);
+  };
+
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const onHandleLogin = async () => {
+    if (!email.trim() || !password.trim()) {
+      setError("* Por favor, preencha todos os campos.");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setError("* Por favor, insira um e-mail válido.");
+      return;
+    }
+    const userName = getUserNameFromEmail(email);
+    localStorage.setItem("email", email);
+    localStorage.setItem("user", userName);
+    setError("");
+    setIsLoading(true);
+  };
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    const storedUser = localStorage.getItem("user");
+    if (storedEmail && storedUser) {
+      window.location.href = "/dashboard";
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => {
+        setIsLoading(false);
+        window.location.href = "/dashboard";
+      }, 2000);
+    }
+  }, [isLoading]);
+
+  return (
+    <S.MainContainer>
+      <S.CenterContainer>
+        <S.LeftContainer>
+          <Image src={TropaIcon} alt={"Tropa Digital"} />
+          <S.TitleContainer>
+            <S.Title>Bem-vindo de volta</S.Title>
+            <S.Subtitle>Entre com sua conta para acessar o painel.</S.Subtitle>
+          </S.TitleContainer>
+          <S.formContainer>
+            <Input
+              label="E-mail"
+              type="email"
+              placeholder="seunome@seuservidor.com"
+              onChange={(e) => setEmail(e.target.value)}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <Input
+              label="Senha"
+              type="password"
+              placeholder="Digite aqui"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
+            {isLoading && (
+              <S.LoadingContainer>
+                <S.Spinner />
+              </S.LoadingContainer>
+            )}
+            {isLoading ? (
+              <Button disabled>Carregando...</Button>
+            ) : (
+              <Button onClick={onHandleLogin}>Enviar</Button>
+            )}
+          </S.formContainer>
+        </S.LeftContainer>
+        <S.RightContainer>
+          <S.LoginImage src={loginIcon} alt={"Login Icon"} />
+        </S.RightContainer>
+      </S.CenterContainer>
+    </S.MainContainer>
   );
 }
