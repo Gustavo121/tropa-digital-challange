@@ -3,8 +3,6 @@ import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import loginIcon from "../../public/icons/login-icon.svg";
-import TropaIcon from "../../public/icons/tropa.svg";
 import * as S from "./styles";
 
 export default function Home() {
@@ -62,7 +60,7 @@ export default function Home() {
     <S.MainContainer>
       <S.CenterContainer>
         <S.LeftContainer>
-          <Image src={TropaIcon} alt={"Tropa Digital"} />
+          <Image src="/icons/tropa.svg" alt={"Tropa Digital"} />
           <S.TitleContainer>
             <S.Title>Bem-vindo de volta</S.Title>
             <S.Subtitle>Entre com sua conta para acessar o painel.</S.Subtitle>
@@ -94,7 +92,7 @@ export default function Home() {
           </S.formContainer>
         </S.LeftContainer>
         <S.RightContainer>
-          <S.LoginImage src={loginIcon} alt={"Login Icon"} />
+          <S.LoginImage src="/icons/login-icon.svg" alt={"Login Icon"} />
         </S.RightContainer>
       </S.CenterContainer>
     </S.MainContainer>

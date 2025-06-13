@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState } from "react";
-import RowOptionsIcon from "../../../../../public/icons/row-options.svg";
 import { InsertButton } from "../insertButton";
 import { SearchBar } from "../SearchBar";
 import * as S from "./styles";
@@ -63,7 +62,10 @@ export default function EventsDashboard({
                 <td>
                   <td>
                     <S.RowOptionsButton>
-                      <Image src={RowOptionsIcon} alt="Row Options Icon" />
+                      <Image
+                        src="/icons/row-options.svg"
+                        alt="Row Options Icon"
+                      />
                     </S.RowOptionsButton>
                   </td>
                 </td>

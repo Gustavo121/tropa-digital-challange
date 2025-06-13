@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import EyeIcon from "../../../public/icons/eye.svg";
-import EyeSlashIcon from "../../../public/icons/eye-slash.svg";
 import * as S from "./styles";
 
 interface InputProps {
@@ -39,9 +37,9 @@ export const Input = ({
       return (
         <S.IconWrapper onClick={handleToggleShowPassword}>
           {showPassword ? (
-            <Image src={EyeSlashIcon} alt={""} />
+            <Image src="/icons/eye-slash.svg" alt={""} />
           ) : (
-            <Image src={EyeIcon} alt={""} />
+            <Image src="/icons/eye.svg" alt={""} />
           )}
         </S.IconWrapper>
       );
