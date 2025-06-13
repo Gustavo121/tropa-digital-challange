@@ -1,21 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
-import * as S from "./styles";
 import EyeIcon from "../../../public/icons/eye.svg";
-import UploadIcon from "../../../public/icons/import.svg";
-
-// ⭐ ADICIONE ESTES CONSOLE.LOGS AQUI ⭐
-console.log("EyeIcon no componente Input:", EyeIcon);
-console.log("Tipo de EyeIcon:", typeof EyeIcon);
-console.log("UploadIcon no componente Input:", UploadIcon);
-console.log("Tipo de UploadIcon:", typeof UploadIcon);
-// ⭐ FIM DOS CONSOLE.LOGS ⭐
-
+import EyeSlashIcon from "../../../public/icons/eye-slash.svg";
+import * as S from "./styles";
 
 interface InputProps {
   label?: string;
-  type?: "password" | "import" | "text" | "email" | "number";
+  type?: "password" | "text" | "email";
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -31,7 +24,6 @@ export const Input = ({
   onIconClick,
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  const needsIconSpace = type === "password" || type === "import";
 
   const handleToggleShowPassword = () => {
     setShowPassword((prev) => !prev);
@@ -46,16 +38,11 @@ export const Input = ({
     if (type === "password") {
       return (
         <S.IconWrapper onClick={handleToggleShowPassword}>
-          {/* Se você tiver um ícone diferente para o estado de "olho fechado" (EyeSlashIcon),
-              importe-o da mesma forma e use-o aqui condicionalmente. */}
-          <EyeIcon width={20} height={20} />
-        </S.IconWrapper>
-      );
-    }
-    if (type === "import") {
-      return (
-        <S.IconWrapper onClick={onIconClick}>
-          <UploadIcon width={20} height={20} />
+          {showPassword ? (
+            <Image src={EyeSlashIcon} alt={""} />
+          ) : (
+            <Image src={EyeIcon} alt={""} />
+          )}
         </S.IconWrapper>
       );
     }
@@ -70,7 +57,7 @@ export const Input = ({
     <S.Container>
       {label && <S.LabelText htmlFor={inputId}>{label}</S.LabelText>}
 
-      <S.InputWrapper $hasIcon={needsIconSpace}>
+      <S.InputWrapper $hasIcon={true}>
         <S.Input
           id={inputId}
           type={inputHtmlType}

@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Code Challenge - Tropa Digital
 
-## Getting Started
+Este projeto é um **Code Challenge** proposto pela empresa **Tropa Digital**.
 
-First, run the development server:
+O desafio consiste na criação de uma aplicação com uma **tela de login**. Após o login bem-sucedido, o usuário é redirecionado para um **Dashboard para gestão de eventos**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Desenvolvido por
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **NestJS** versão 15
+- **Styled Components**
+- **TypeScript**
+- **React**
+- **Node.js** (versão **LTS** recomendada)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Como Executar
 
-To learn more about Next.js, take a look at the following resources:
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Execute o projeto:
+   ```bash
+    npm run dev
+   ```
+3. Acesse a aplicação em [localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧠 Conhecimentos Aplicados
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Tipagem estática e segura com TypeScript
+- Utilização das rotas nativas do NestJS 15
+- Responsividade utilizando styled-components
+- Gerenciamento de estado com useState
+- Manipulação e persistência de dados no localStorage (armazenamento do usuário)
 
-## Deploy on Vercel
+## 📌 Observações
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este projeto foi desenvolvido com foco em boas práticas de desenvolvimento front-end, organização de código e legibilidade. O objetivo é demonstrar domínio nas tecnologias mencionadas e entregar uma experiência simples e funcional para o desafio proposto.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Aplicação desenvolvida por Gustavo Gouvêa
+  Disponivel em [tropa-digital-challange](https://github.com/Gustavo121/tropa-digital-challange)

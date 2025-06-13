@@ -5,9 +5,10 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
-  webpack(config, { isServer }) {
-    const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test && rule.test instanceof RegExp && rule.test.test(".svg")
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find(
+      (rule: { test?: RegExp | string }) =>
+        rule.test && rule.test instanceof RegExp && rule.test.test(".svg")
     );
 
     if (fileLoaderRule) {
@@ -18,13 +19,11 @@ const nextConfig: NextConfig = {
       test: /\.svg$/,
       use: [
         {
-          loader: '@svgr/webpack',
+          loader: "@svgr/webpack",
           options: {
             svgo: true,
             icon: true,
-            // ⭐ Certifique-se de que não haja defaultExport: 'none' aqui ⭐
-            // Se tiver, remova-o. Se não tiver nada, ele geralmente faz o default export.
-            // Se quiser ser explícito, pode adicionar: defaultExport: 'component',
+            defaultExport: "none",
           },
         },
       ],

@@ -1,11 +1,9 @@
-// components/input/styles.ts
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  width: 20.813rem;
 `;
 
 export const LabelText = styled.label`
@@ -17,7 +15,6 @@ export const LabelText = styled.label`
   font-family: var(--font-roboto);
 `;
 
-// AQUI: A prop '$hasIcon' é definida na tipagem
 export const InputWrapper = styled.div<{ $hasIcon: boolean }>`
   position: relative;
   height: 2.5rem;
@@ -25,12 +22,6 @@ export const InputWrapper = styled.div<{ $hasIcon: boolean }>`
   align-items: center;
   width: 100%;
 
-  /* Você pode usar '$hasIcon' para estilos específicos no wrapper se precisar,
-     mas no seu caso, o Input já lida com o padding. */
-  /*
-  ${props => props.$hasIcon && `
-    border: 1px solid green; // Exemplo de estilo condicional no wrapper
-  `}
   */
 `;
 
@@ -51,14 +42,13 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border: 1px solid #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border: 1px solid rgb(201, 117, 83);
+    box-shadow: 0 0 3px rgb(224, 123, 83);
   }
 
-  /* Aplica padding-right condicionalmente baseado no data-input-type */
-  &[data-input-type='password'],
-  &[data-input-type='import'] {
-    padding-right: 2.8rem; /* Mais espaço à direita para o ícone */
+  &[data-input-type="password"],
+  &[data-input-type="import"] {
+    padding-right: 2.8rem;
   }
 `;
 
@@ -70,8 +60,5 @@ export const IconWrapper = styled.div`
   justify-content: center;
   color: #657593;
   height: 100%;
-
-  svg {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;

@@ -1,18 +1,18 @@
+import StyledComponentsRegistry from "@/lib/registry";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import StyledComponentsRegistry from "@/lib/registry";
 
 const roboto = Roboto({
-  weight: ['100', '300', '400', '500', '700', '900'],
-  subsets: ['latin'],
-  display: 'swap', 
-  variable: '--font-roboto', 
+  weight: ["100", "300", "400", "500", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
-  title: "Meu App Next.js com Roboto",
-  description: "App Next.js usando a fonte Roboto.",
+  title: "Tropa Digital",
+  description: "Tropa Digital - Plataforma de Gestão de Eventos",
 };
 
 export default function RootLayout({
