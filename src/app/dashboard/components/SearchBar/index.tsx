@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import SearchIcon from "../../../../../public/icons/search.svg";
 import * as S from "./styles";
 
 interface InputProps {
@@ -14,7 +13,7 @@ interface InputProps {
 export const SearchBar = ({ placeholder, value, onChange }: InputProps) => {
   return (
     <S.Container>
-      <S.Icon src={SearchIcon} alt="Search Icon" />
+      <S.Icon src="/icons/search.svg" alt="Search Icon" />
       <S.Input
         placeholder={placeholder}
         value={value}

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ReactNode } from "react";
-import PlusIcon from "../../../../../public/icons/plus.svg";
 import * as S from "./styles";
 
 interface ButtonProps {
@@ -11,7 +10,7 @@ interface ButtonProps {
 export const InsertButton = ({ children, onClick, disabled }: ButtonProps) => {
   return (
     <S.Button onClick={onClick} disabled={disabled}>
-      <Image src={PlusIcon} alt={"Plus"} />
+      <Image src="/icons/plus.svg" alt={"Plus"} />
       <span>{children}</span>
     </S.Button>
   );
